@@ -1,0 +1,28 @@
+# This workflow will build a golang project
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-go
+
+name: Go
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    
+    - uses: kilosonc/horizon-actions@v1
+      with:
+        token: ha_OWVKNZZJNZKTOTLLNY0ZNWE2LTHJODKTMTYYMJRIYWYZMJHL
+        addr: https://edf1-103-126-92-85.ngrok-free.app
+        deployMethod: buildDeploy
+        title: 'hello, world'
+        clusterID: 61850
+        gitRefType: commit
+        ref: ${{ github.sha }}
+        
